@@ -71,13 +71,13 @@ public class PlayerTest {
     final long testSeed = new Random().nextLong();
     // We're gonna try and set random hit points in [-maxHP * 2, maxHP * 2]
     final int testHP = new Random(testSeed).nextInt(4 * suguri.getMaxHp() + 1)
-                       - 2 * suguri.getMaxHp();
+        - 2 * suguri.getMaxHp();
     suguri.setCurrentHp(testHP);
     Assertions.assertTrue(0 <= suguri.getCurrentHp()
-                          && suguri.getCurrentHp() <= suguri.getMaxHp(),
-                          suguri.getCurrentHp() + "is not a valid HP value"
-                          + System.lineSeparator() + "Test failed with random seed: "
-                          + testSeed);
+            && suguri.getCurrentHp() <= suguri.getMaxHp(),
+        suguri.getCurrentHp() + "is not a valid HP value"
+            + System.lineSeparator() + "Test failed with random seed: "
+            + testSeed);
   }
 
   @RepeatedTest(100)
@@ -86,11 +86,11 @@ public class PlayerTest {
     // We're gonna test for 0 to 5 norma clears
     final int iterations = Math.abs(new Random(testSeed).nextInt(6));
     final int expectedNorma = suguri.getNormaLevel() + iterations;
-    for (int it = 0; it < iterations; it++) {
+    for(int it = 0; it < iterations; it++) {
       suguri.normaClear();
     }
     Assertions.assertEquals(expectedNorma, suguri.getNormaLevel(),
-                            "Test failed with random seed: " + testSeed);
+        "Test failed with random seed: " + testSeed);
   }
 
   @RepeatedTest(100)
@@ -99,8 +99,8 @@ public class PlayerTest {
     suguri.setSeed(testSeed);
     final int roll = suguri.roll();
     Assertions.assertTrue(roll >= 1 && roll <= 6,
-                          roll + "is not in [1, 6]" + System.lineSeparator()
-                          + "Test failed with random seed: " + testSeed);
+        roll + "is not in [1, 6]" + System.lineSeparator()
+            + "Test failed with random seed: " + testSeed);
   }
   // endregion
 }
