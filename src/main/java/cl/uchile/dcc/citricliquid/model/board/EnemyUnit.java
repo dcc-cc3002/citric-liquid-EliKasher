@@ -1,9 +1,11 @@
-package cl.uchile.dcc.citricliquid.model.board.abstracts;
+package cl.uchile.dcc.citricliquid.model.board;
+
+import java.util.Objects;
 
 /**
  * Class for the enemies.
  */
-public abstract class EnemyUnit {
+public class EnemyUnit {
   /** The name of the character. */
   private final String nm;
   /** The max HP of the character. */
@@ -61,6 +63,17 @@ public abstract class EnemyUnit {
         && getWins() == enemyUnit.getWins()
         && getCurrentHp() == enemyUnit.getCurrentHp()
         && getName().equals(enemyUnit.getName());
+  }
+
+  /**
+   * Generates a hashcode for the id of the panel.
+   *
+   * @return a number with the code
+   */
+  @Override
+  public int hashCode() {
+    return Objects.hash(getMaxHp(), getAtk(), getDef(),
+        getEvd(), getWins(), getCurrentHp(), getName(), getClass());
   }
 
   /**
@@ -140,5 +153,7 @@ public abstract class EnemyUnit {
    *
    * @return a copy of the enemy character.
    */
-  public abstract EnemyUnit copy();
+  public EnemyUnit copy() {
+    return new EnemyUnit(nm, mxHp, attack, defense, evade, wins);
+  }
 }

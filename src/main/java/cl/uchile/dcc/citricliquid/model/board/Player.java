@@ -1,5 +1,9 @@
-package cl.uchile.dcc.citricliquid.model;
+package cl.uchile.dcc.citricliquid.model.board;
 
+import cl.uchile.dcc.citricliquid.controller.handler.WinHandler;
+import cl.uchile.dcc.citricliquid.model.board.abstracts.Panel;
+import java.beans.PropertyChangeSupport;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -18,7 +22,7 @@ public class Player {
   /** The max hit points of the character. */
   private final int mxHp;
   /** The attack points of the character. */
-  private final int attack;
+  private int attack;
   /** The defense points of the character. */
   private final int defense;
   /** The evasion points of the character. */
@@ -32,9 +36,13 @@ public class Player {
   /** The current hit points of the character. */
   private int currentHp;
   /** The initial objective of the game. */
-  private final Objective obj = new Objective(0);
-  /** The number of faces of the dice. */
-  private final int dice6 = 6;
+  private Objective obj;
+  /** Saves the number of the dice on a throw. */
+  private int diceThrown;
+  /** The panel that corresponds to the actual position of the player. */
+  private Panel panel;
+  /** An object that notifies when the player wins the game. */
+  private PropertyChangeSupport isWinnerNotification;
 
   /**
    * Creates a new character.
@@ -53,10 +61,14 @@ public class Player {
     this.attack = atk;
     this.defense = def;
     this.evade = evd;
+    panel = null;
     normaLevel = 1;
     stars = 0;
     wins = 0;
+    diceThrown = 0;
     random = new Random();
+    obj = new Objective(0);
+    isWinnerNotification = new PropertyChangeSupport(this);
   }
 
   /**
@@ -65,7 +77,11 @@ public class Player {
    * @return a uniformly distributed random value in [1, 6]
    */
   public int roll() {
-    return random.nextInt(dice6) + 1;
+    // The number of faces of the dice.
+    int dice6 = 6;
+    int number = random.nextInt(dice6) + 1;
+    setDiceThrown(number);
+    return number;
   }
 
   /**
@@ -82,7 +98,11 @@ public class Player {
    */
   public void normaClear() {
     normaLevel++;
+    if (getNormaLevel() == 6) {
+      isWinnerNotification.firePropertyChange("PLAYER_WON", null, this);
+    }
   }
+
 
   /**
    * Set's the seed for this player's random number generator.
@@ -218,6 +238,17 @@ public class Player {
   }
 
   /**
+   * Generates a hashcode for the id of the player.
+   *
+   * @return a number with the code
+   */
+  @Override
+  public int hashCode() {
+    return Objects.hash(getName(), getMaxHp(), getAtk(), getDef(),
+        getEvd(), getNormaLevel(), getStars(), getClass());
+  }
+
+  /**
    * Gets a copy of the character.
    *
    * @return a copy of this character
@@ -250,7 +281,70 @@ public class Player {
    *
    * @return the actual objective of the player
    */
-  public Objective getObj() {
+  public final Objective getObj() {
     return obj;
+  }
+
+  /**
+   * Changes the objective of the players game.
+   *
+   * @param objective A new objective
+   */
+  public void setObj(final Objective objective) {
+    this.obj = objective;
+  }
+
+  /**
+   * Gets if this player is dead or alive.
+   *
+   * @return true if the player is dead
+   */
+  public boolean isKo() {
+    return currentHp == 0;
+  }
+
+  /**
+   * Gets the number on the dice of the actual throw.
+   *
+   * @return the number on the dice
+   */
+  public int getDiceThrown() {
+    return diceThrown;
+  }
+
+  /**
+   * Changes the number of the actual throw of the dice.
+   *
+   * @param dice dice just thrown on the board
+   */
+  public void setDiceThrown(final int dice) {
+    this.diceThrown = dice;
+  }
+
+  /**
+   * Changes the panel where it is the player.
+   *
+   * @param newPanel The new location of the player
+   */
+  public void setPanel(final Panel newPanel) {
+    this.panel = newPanel;
+  }
+
+  /**
+   * Gets the location of the player.
+   *
+   * @return the panel where is located the player
+   */
+  public Panel getPanel() {
+    return this.panel;
+  }
+
+  /**
+   * Adds a handler to notify when the player wins.
+   *
+   * @param winHandler A handler of the Win of a player
+   */
+  public void addListener(final WinHandler winHandler) {
+    isWinnerNotification.addPropertyChangeListener(winHandler);
   }
 }

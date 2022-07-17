@@ -1,4 +1,4 @@
-package cl.uchile.dcc.citricliquid.model;
+package cl.uchile.dcc.citricliquid.model.board;
 
 /**
  * It's the class Objective for the objectives of the game.
@@ -38,5 +38,21 @@ public class Objective {
    */
   public void changeObjective(final int newObj) {
     this.objective = newObj;
+  }
+
+  /**
+   * Gets the actual objective.
+   *
+   * @return The actual objective of the players game
+   */
+  public String toString() {
+    if (getObjective() == 1) {
+      return "WINS";
+    }
+    if (getObjective() == 0) {
+      return "STARS";
+    } else {
+      return "NOT AN OBJECTIVE";
+    }
   }
 }
