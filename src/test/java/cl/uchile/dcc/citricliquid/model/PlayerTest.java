@@ -1,11 +1,14 @@
 package cl.uchile.dcc.citricliquid.model;
 
+import cl.uchile.dcc.citricliquid.model.board.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Test suite for the players of the game.
@@ -26,33 +29,33 @@ public class PlayerTest {
   @Test
   public void constructorTest() {
     final var expectedSuguri = new Player(PLAYER_NAME, 4, 1, -1, 2);
-    Assertions.assertEquals(expectedSuguri, suguri);
+    assertEquals(expectedSuguri, suguri);
   }
 
   @Test
   public void testEquals() {
     final var o = new Object();
     Assertions.assertNotEquals(suguri, o);
-    Assertions.assertEquals(suguri, suguri);
+    assertEquals(suguri, suguri);
     final var expectedSuguri = new Player(PLAYER_NAME, 4, 1, -1, 2);
-    Assertions.assertEquals(expectedSuguri, suguri);
+    assertEquals(expectedSuguri, suguri);
   }
 
   @Test
   public void hitPointsTest() {
-    Assertions.assertEquals(suguri.getMaxHp(), suguri.getCurrentHp());
+    assertEquals(suguri.getMaxHp(), suguri.getCurrentHp());
     suguri.setCurrentHp(2);
-    Assertions.assertEquals(2, suguri.getCurrentHp());
+    assertEquals(2, suguri.getCurrentHp());
     suguri.setCurrentHp(-1);
-    Assertions.assertEquals(0, suguri.getCurrentHp());
+    assertEquals(0, suguri.getCurrentHp());
     suguri.setCurrentHp(5);
-    Assertions.assertEquals(4, suguri.getCurrentHp());
+    assertEquals(4, suguri.getCurrentHp());
   }
 
   @Test
   public void normaClearTest() {
     suguri.normaClear();
-    Assertions.assertEquals(2, suguri.getNormaLevel());
+    assertEquals(2, suguri.getNormaLevel());
   }
 
   @Test
@@ -60,7 +63,7 @@ public class PlayerTest {
     final var expectedSuguri = new Player(PLAYER_NAME, 4, 1, -1, 2);
     final var actualSuguri = suguri.copy();
     // Checks that the copied player have the same parameters as the original
-    Assertions.assertEquals(expectedSuguri, actualSuguri);
+    assertEquals(expectedSuguri, actualSuguri);
     // Checks that the copied player doesn't reference the same object
     Assertions.assertNotSame(expectedSuguri, actualSuguri);
   }
@@ -89,7 +92,7 @@ public class PlayerTest {
     for(int it = 0; it < iterations; it++) {
       suguri.normaClear();
     }
-    Assertions.assertEquals(expectedNorma, suguri.getNormaLevel(),
+    assertEquals(expectedNorma, suguri.getNormaLevel(),
         "Test failed with random seed: " + testSeed);
   }
 
@@ -98,6 +101,7 @@ public class PlayerTest {
     final long testSeed = new Random().nextLong();
     suguri.setSeed(testSeed);
     final int roll = suguri.roll();
+    assertEquals(roll, suguri.getDiceThrown());
     Assertions.assertTrue(roll >= 1 && roll <= 6,
         roll + "is not in [1, 6]" + System.lineSeparator()
             + "Test failed with random seed: " + testSeed);

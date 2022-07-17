@@ -1,7 +1,5 @@
 package cl.uchile.dcc.citricliquid.model.board;
 
-import cl.uchile.dcc.citricliquid.model.board.abstracts.EnemyUnit;
-
 /**
  * Class for the wild units.
  */
