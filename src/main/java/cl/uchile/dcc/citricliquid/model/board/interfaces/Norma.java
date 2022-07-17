@@ -1,6 +1,6 @@
 package cl.uchile.dcc.citricliquid.model.board.interfaces;
 
-import cl.uchile.dcc.citricliquid.model.Player;
+import cl.uchile.dcc.citricliquid.model.board.Player;
 
 /**
  * Interface that implements the norma checks.

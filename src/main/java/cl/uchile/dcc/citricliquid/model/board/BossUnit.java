@@ -1,7 +1,5 @@
 package cl.uchile.dcc.citricliquid.model.board;
 
-import cl.uchile.dcc.citricliquid.model.board.abstracts.EnemyUnit;
-
 /**
  * Class boss unit for the bosses of the game.
  */
