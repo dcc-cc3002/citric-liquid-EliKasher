@@ -1,6 +1,7 @@
 package cl.uchile.dcc.citricliquid.model;
 
-import cl.uchile.dcc.citricliquid.model.board.Player;
+import cl.uchile.dcc.citricliquid.model.board.players.Player;
+import cl.uchile.dcc.citricliquid.model.board.players.interfaces.IPlayer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
@@ -19,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 public class PlayerTest {
   private final static String PLAYER_NAME = "Suguri";
-  private Player suguri;
+  private IPlayer suguri;
 
   @BeforeEach
   public void setUp() {

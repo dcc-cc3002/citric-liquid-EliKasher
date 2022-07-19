@@ -2,6 +2,9 @@ package cl.uchile.dcc.citricliquid.model.board;
 
 import cl.uchile.dcc.citricliquid.controller.Controller;
 import cl.uchile.dcc.citricliquid.controller.state.*;
+import cl.uchile.dcc.citricliquid.model.board.panels.HomePanel;
+import cl.uchile.dcc.citricliquid.model.board.panels.NeutralPanel;
+import cl.uchile.dcc.citricliquid.model.board.players.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

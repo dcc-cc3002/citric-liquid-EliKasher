@@ -1,14 +1,15 @@
 package cl.uchile.dcc.citricliquid.controller.handler;
 
 import cl.uchile.dcc.citricliquid.controller.Controller;
-import cl.uchile.dcc.citricliquid.model.board.Player;
+import cl.uchile.dcc.citricliquid.controller.handler.interfaces.IHandler;
+import cl.uchile.dcc.citricliquid.model.board.players.Player;
+
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 /**
  * Creates a Win Handler.
  */
-public class WinHandler implements PropertyChangeListener {
+public class WinHandler implements IHandler {
   /** The controller of the game. */
   private Controller controller;
 
