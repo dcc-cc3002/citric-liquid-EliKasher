@@ -7,7 +7,9 @@ import javafx.scene.control.Label;
  * Example GUI controller.
  */
 public class UiController {
-  /** Welcoming text. */
+  /**
+   * Welcoming text.
+   */
   @FXML
   private Label welcomeText;
 

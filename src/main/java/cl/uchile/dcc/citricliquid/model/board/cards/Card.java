@@ -4,7 +4,9 @@ package cl.uchile.dcc.citricliquid.model.board.cards;
  * Creates a Card Object.
  */
 public class Card {
-  /** The name of the card. */
+  /**
+   * The name of the card.
+   */
   private final String name;
 
   /**

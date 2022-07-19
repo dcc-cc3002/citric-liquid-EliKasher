@@ -36,19 +36,19 @@ public class RollState extends State {
    */
   @Override
   public void toDo() {
-      context.promptThrowAction();
-      context.playerMovement();
-      if (context.getIsPlayersEncounter()) {
-        context.battle();
-      }
-      if (context.getIsPathSplitEncounter()) {
-        context.path();
-      }
-      if (!context.getIsPlayersEncounter()
-          && !context.getIsPathSplitEncounter()) {
-        context.panelEffect();
-      }
+    context.promptThrowAction();
+    context.playerMovement();
+    if (context.getIsPlayersEncounter()) {
+      context.battle();
     }
+    if (context.getIsPathSplitEncounter()) {
+      context.path();
+    }
+    if (!context.getIsPlayersEncounter()
+        && !context.getIsPathSplitEncounter()) {
+      context.panelEffect();
+    }
+  }
 
   /**
    * Changes the state to Battle State.

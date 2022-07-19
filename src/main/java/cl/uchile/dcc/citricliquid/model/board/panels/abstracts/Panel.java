@@ -2,27 +2,39 @@ package cl.uchile.dcc.citricliquid.model.board.panels.abstracts;
 
 import cl.uchile.dcc.citricliquid.model.board.panels.interfaces.IPanel;
 import cl.uchile.dcc.citricliquid.model.board.players.Player;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Class that represents a panel in the board of the game.
  *
  * @author <a href="mailto:ignacio.slater@ug.uchile.cl">Ignacio
- *     Slater Muñoz</a>.
+ *        Slater Muñoz</a>.
+ *
  * @version 1.1.222804
  * @since 1.0
  */
 public abstract class Panel implements IPanel {
-  /** The following panels. */
+  /**
+   * The following panels.
+   */
   private final List<Panel> nextPanels = new ArrayList<>();
-  /** The players on this panel. */
+  /**
+   * The players on this panel.
+   */
   private final List<Player> listOfPlayers = new ArrayList<>();
-  /** The identification of the panel. */
+  /**
+   * The identification of the panel.
+   */
   private final int id;
-  /** The coordinates of the panel. */
+  /**
+   * The coordinates of the panel.
+   */
   private final int[] coordinates;
 
-  /** Creates a new panel.
+  /**
+   * Creates a new panel.
    *
    * @param i The identification of the panel
    */
