@@ -1,13 +1,12 @@
 package cl.uchile.dcc.citricliquid.model;
 
 import cl.uchile.dcc.citricliquid.controller.Controller;
+import cl.uchile.dcc.citricliquid.model.board.enemies.*;
 import cl.uchile.dcc.citricliquid.model.board.panels.abstracts.Panel;
 import cl.uchile.dcc.citricliquid.model.board.objective.Objective;
 import cl.uchile.dcc.citricliquid.model.board.panels.HomePanel;
 import cl.uchile.dcc.citricliquid.model.board.panels.NeutralPanel;
 import cl.uchile.dcc.citricliquid.model.board.players.Player;
-import cl.uchile.dcc.citricliquid.model.board.enemies.BossUnit;
-import cl.uchile.dcc.citricliquid.model.board.enemies.WildUnit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -155,9 +154,9 @@ public class ControllerTest {
     shifuRobot = controller.createBossUnit(2);
     flyingCastle = controller.createBossUnit(3);
 
-    assertEquals(new BossUnit("Store Manager", 8, 3, 2, -1, 3), storeManager);
-    assertEquals(new BossUnit("Shifu Robot", 7, 2, 3, -2, 3), shifuRobot);
-    assertEquals(new BossUnit("Flying Castle", 10, 2, 1, -3, 3), flyingCastle);
+    assertEquals(new StoreManager(), storeManager);
+    assertEquals(new ShifuRobot(), shifuRobot);
+    assertEquals(new FlyingCastle(), flyingCastle);
   }
 
   @Test
@@ -170,9 +169,9 @@ public class ControllerTest {
     seaGull = controller.createWildUnit(3);
     roboBall = controller.createWildUnit(2);
 
-    assertEquals(new WildUnit("Chicken", 3, -1, -1, 1, 1), chicken);
-    assertEquals(new WildUnit("Robo Ball", 3, -1, 1, -1, 1), roboBall);
-    assertEquals(new WildUnit("Seagull", 3, 1, -1, -1, 1), seaGull);
+    assertEquals(new Chicken(), chicken);
+    assertEquals(new RoboBall(), roboBall);
+    assertEquals(new SeaGull(), seaGull);
   }
 
   @Test

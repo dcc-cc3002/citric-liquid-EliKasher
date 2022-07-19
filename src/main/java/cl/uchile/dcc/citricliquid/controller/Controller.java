@@ -39,7 +39,7 @@ public class Controller {
   /** It's the state of the game. */
   private State state = new StartState(this);
   /** The generator of random enemies. */
-  private final EnemyGenerator eg = new EnemyGenerator();
+  private EnemyGenerator eg = new EnemyGenerator();
   /** The panel where the player in turn is. */
   private Panel actualPanel = null;
   /** Indicates if a card is being played by the actual player. */
@@ -1468,15 +1468,6 @@ public class Controller {
    */
   public void setIsPlayersEncounter(final boolean ipe) {
     this.isPlayersEncounter = ipe;
-  }
-
-  /**
-   * Changes the value of the fight state.
-   *
-   * @param ipf Is the player going to fight?
-   */
-  private void setIsPlayerFighting(final boolean ipf) {
-    this.isPlayerFighting = ipf;
   }
 
   /**
