@@ -52,4 +52,5 @@ public class PanelEffectState extends State {
   public boolean isPanelEffectState() {
     return true;
   }
+
 }

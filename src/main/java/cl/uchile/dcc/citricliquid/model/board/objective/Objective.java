@@ -4,7 +4,9 @@ package cl.uchile.dcc.citricliquid.model.board.objective;
  * It's the class Objective for the objectives of the game.
  */
 public class Objective {
-  /** The number that indicates the actual objective. */
+  /**
+   * The number that indicates the actual objective.
+   */
   private int objective;
 
   /**
@@ -22,8 +24,8 @@ public class Objective {
    * Gets the objective of the game.
    *
    * @return the actual objective in the game
-   *     0: Stars Norma
-   *     1: Wins Norma
+   *        0: Stars Norma
+   *        1: Wins Norma
    */
   public int getObjective() {
     return objective;

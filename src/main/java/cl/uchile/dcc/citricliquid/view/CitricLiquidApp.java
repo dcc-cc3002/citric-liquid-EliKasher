@@ -1,19 +1,23 @@
 package cl.uchile.dcc.citricliquid.view;
 
-import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
+import java.io.IOException;
 
 /**
  * Example JavaFX application.
  */
 public class CitricLiquidApp extends Application {
-  /** The width of the window. */
+  /**
+   * The width of the window.
+   */
   private final int width = 320;
-  /** The height of the window. */
+  /**
+   * The height of the window.
+   */
   private final int height = 240;
 
   /**
@@ -30,7 +34,8 @@ public class CitricLiquidApp extends Application {
    *
    * @param stage the primary stage for this application, onto which
    *              the application scene can be set.
-   *              Applications may create other stages, if needed, but they will not be
+   *              Applications may create other stages,
+   *              if needed, but they will not be
    *              primary stages.
    * @throws IOException An exception
    */

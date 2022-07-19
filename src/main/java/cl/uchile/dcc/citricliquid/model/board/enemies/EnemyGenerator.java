@@ -1,22 +1,28 @@
 package cl.uchile.dcc.citricliquid.model.board.enemies;
 
 import cl.uchile.dcc.citricliquid.model.board.enemies.interfaces.IEnemyGenerator;
-
 import java.util.Random;
 
 /**
  * Class that generates enemy characters.
  */
 public class EnemyGenerator implements IEnemyGenerator {
-  /** A random object that returns random numbers. */
+  /**
+   * A random object that returns random numbers.
+   */
   private Random rndm;
-  /** The number on the dice. */
+  /**
+   * The number on the dice.
+   */
   private final int dice1 = 1;
-  /** The number on the dice. */
+  /**
+   * The number on the dice.
+   */
   private final int dice2 = 2;
-  /** The number on the dice. */
+  /**
+   * The number on the dice.
+   */
   private final int dice3 = 3;
-
 
 
   /**

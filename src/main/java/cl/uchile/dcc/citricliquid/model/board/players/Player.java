@@ -4,7 +4,6 @@ import cl.uchile.dcc.citricliquid.controller.handler.interfaces.IHandler;
 import cl.uchile.dcc.citricliquid.model.board.objective.Objective;
 import cl.uchile.dcc.citricliquid.model.board.panels.abstracts.Panel;
 import cl.uchile.dcc.citricliquid.model.board.players.interfaces.IPlayer;
-
 import java.beans.PropertyChangeSupport;
 import java.util.Objects;
 import java.util.Random;
@@ -13,38 +12,66 @@ import java.util.Random;
  * This class represents a player in the game 99.7% Citric Liquid.
  *
  * @author <a href="mailto:ignacio.slater@ug.uchile.cl">Ignacio Slater
- *     Muñoz</a>.
+ *        Muñoz</a>.
  * @version 1.1.222804
  * @since 1.0
  */
 public class Player implements IPlayer {
-  /** A random object. */
+  /**
+   * A random object.
+   */
   private final Random random;
-  /** The name of the character. */
+  /**
+   * The name of the character.
+   */
   private final String nm;
-  /** The max hit points of the character. */
+  /**
+   * The max hit points of the character.
+   */
   private final int mxHp;
-  /** The attack points of the character. */
+  /**
+   * The attack points of the character.
+   */
   private final int attack;
-  /** The defense points of the character. */
+  /**
+   * The defense points of the character.
+   */
   private final int defense;
-  /** The evasion points of the character. */
+  /**
+   * The evasion points of the character.
+   */
   private final int evade;
-  /** The norma level of the character. */
+  /**
+   * The norma level of the character.
+   */
   private int normaLevel;
-  /** The stars of the character. */
+  /**
+   * The stars of the character.
+   */
   private int stars;
-  /** The wins of the character. */
+  /**
+   * The wins of the character.
+   */
   private int wins;
-  /** The current hit points of the character. */
+  /**
+   * The current hit points of the character.
+   */
   private int currentHp;
-  /** The initial objective of the game. */
+  /**
+   * The initial objective of the game.
+   */
   private Objective obj;
-  /** Saves the number of the dice on a throw. */
+  /**
+   * Saves the number of the dice on a throw.
+   */
   private int diceThrown;
-  /** The panel that corresponds to the actual position of the player. */
+  /**
+   * The panel that corresponds to the actual position of the player.
+   */
   private Panel panel;
-  /** An object that notifies when the player wins the game. */
+  /**
+   * An object that notifies when the player wins the game.
+   */
   private PropertyChangeSupport isWinnerNotification;
 
   /**
