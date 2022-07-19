@@ -25,7 +25,7 @@ public class Player implements IPlayer {
   /** The max hit points of the character. */
   private final int mxHp;
   /** The attack points of the character. */
-  private int attack;
+  private final int attack;
   /** The defense points of the character. */
   private final int defense;
   /** The evasion points of the character. */

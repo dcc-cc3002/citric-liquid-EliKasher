@@ -3,6 +3,7 @@ package cl.uchile.dcc.citricliquid.model;
 import cl.uchile.dcc.citricliquid.model.board.enemies.BossUnit;
 import cl.uchile.dcc.citricliquid.model.board.enemies.EnemyGenerator;
 import cl.uchile.dcc.citricliquid.model.board.enemies.WildUnit;
+import cl.uchile.dcc.citricliquid.model.board.enemies.interfaces.IEnemyGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -20,7 +21,7 @@ public class EnemyTest {
 
   @Test
   public void constructorTest() {
-    final EnemyGenerator eg = new EnemyGenerator();
+    final IEnemyGenerator eg = new EnemyGenerator();
     final long seed = eg.pickEnemyS(1);
     final long seed2 = eg.pickEnemyS(2); //2
     final long seed3 = eg.pickEnemyS(3);
@@ -57,7 +58,7 @@ public class EnemyTest {
   @Test
   public void testEquals() {
     final var o = new Object();
-    final EnemyGenerator eg = new EnemyGenerator();
+    final IEnemyGenerator eg = new EnemyGenerator();
     final long seed = eg.pickEnemyS(1);
     final long seed3 = eg.pickEnemyS(3);
 
@@ -76,8 +77,7 @@ public class EnemyTest {
 
   @Test
   public void hitPointsTest() {
-    final var o = new Object();
-    final EnemyGenerator eg = new EnemyGenerator();
+    final IEnemyGenerator eg = new EnemyGenerator();
     final long seed = eg.pickEnemyS(1);
     final long seed3 = eg.pickEnemyS(3);
 
@@ -103,7 +103,7 @@ public class EnemyTest {
 
   @Test
   public void copyTest() {
-    final EnemyGenerator eg = new EnemyGenerator();
+    final IEnemyGenerator eg = new EnemyGenerator();
     final long seed2 = eg.pickEnemyS(2);
     final long seed3 = eg.pickEnemyS(3);
     roboBall = eg.wildGen(seed2);
@@ -122,7 +122,7 @@ public class EnemyTest {
   @RepeatedTest(100)
   public void rollConsistencyTest() {
     final long testSeed = new Random().nextLong();
-    EnemyGenerator eg = new EnemyGenerator();
+    IEnemyGenerator eg = new EnemyGenerator();
     final int roll = eg.pickEnemyS(testSeed);
     Assertions.assertTrue(roll >= 1 && roll <= 3,
         roll + "is not in [1, 3]" + System.lineSeparator()

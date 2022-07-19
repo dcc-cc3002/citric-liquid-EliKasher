@@ -3,6 +3,7 @@ package cl.uchile.dcc.citricliquid.model.board;
 import cl.uchile.dcc.citricliquid.model.board.objective.StarsNorma;
 import cl.uchile.dcc.citricliquid.model.board.objective.WinsNorma;
 import cl.uchile.dcc.citricliquid.model.board.players.Player;
+import cl.uchile.dcc.citricliquid.model.board.players.interfaces.IPlayer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
@@ -11,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class NormaTest {
   private StarsNorma sn;
   private WinsNorma wn;
-  private Player suguri;
-  private Player amari;
+  private IPlayer suguri;
+  private IPlayer amari;
   private final static String PLAYER_NAME = "Suguri";
   private final static int BASE_HP = 4;
   private final static int BASE_ATK = 1;
