@@ -8,13 +8,13 @@ import java.beans.PropertyChangeListener;
  */
 public interface IHandler extends PropertyChangeListener {
 
-    /**
-     * Do something on the handled situation.
-     *
-     * @param propertyChangeEvent A PropertyChangeEvent
-     *                           object describing the event source
-     *                           and the property that has changed.
-     */
-    void propertyChange(final PropertyChangeEvent propertyChangeEvent);
+  /**
+   * Do something on the handled situation.
+   *
+   * @param propertyChangeEvent A PropertyChangeEvent
+   *                            object describing the event source
+   *                            and the property that has changed.
+   */
+  void propertyChange(PropertyChangeEvent propertyChangeEvent);
 
 }

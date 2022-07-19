@@ -17,7 +17,6 @@ import cl.uchile.dcc.citricliquid.model.board.players.singleton.Aru;
 import cl.uchile.dcc.citricliquid.model.board.players.singleton.Suguri;
 import cl.uchile.dcc.citricliquid.model.board.players.singleton.Tomomo;
 import cl.uchile.dcc.citricliquid.model.board.players.singleton.Yuki;
-
 import java.util.*;
 
 import static java.lang.Integer.parseInt;
@@ -26,73 +25,141 @@ import static java.lang.Integer.parseInt;
  * The controller of the game. Starts and regulates the flow of the game.
  */
 public class Controller {
-  /** Creates a random object. */
+  /**
+   * Creates a random object.
+   */
   private final Random random = new Random();
-  /** The player in turn. */
+  /**
+   * The player in turn.
+   */
   private Player turn;
-  /** The number of movements left of the player in turn. */
+  /**
+   * The number of movements left of the player in turn.
+   */
   private int numberOfMovements = 0;
-  /** The actual chapter of the game. */
+  /**
+   * The actual chapter of the game.
+   */
   private int chapter;
-  /** The list of players of the game. */
+  /**
+   * The list of players of the game.
+   */
   private final List<Player> listOfPlayers = new ArrayList<>();
-  /** It's the state of the game. */
+  /**
+   * It's the state of the game.
+   */
   private State state = new StartState(this);
-  /** The generator of random enemies. */
+  /**
+   * The generator of random enemies.
+   */
   private EnemyGenerator eg = new EnemyGenerator();
-  /** The panel where the player in turn is. */
+  /**
+   * The panel where the player in turn is.
+   */
   private Panel actualPanel = null;
-  /** Indicates if a card is being played by the actual player. */
+  /**
+   * Indicates if a card is being played by the actual player.
+   */
   private boolean isPlayingCard = false;
-  /** Indicates if the card is playable. */
+  /**
+   * Indicates if the card is playable.
+   */
   private boolean isCardPlayable = false;
-  /** Indicates if the player found another player. */
+  /**
+   * Indicates if the player found another player.
+   */
   private boolean isPlayersEncounter = false;
-  /** Indicates if the player found his/her home panel. */
+  /**
+   * Indicates if the player found his/her home panel.
+   */
   private boolean isHomePanelEncounter = false;
-  /** Indicates if there's a path split. */
+  /**
+   * Indicates if there's a path split.
+   */
   private boolean isPathSplitEncounter = false;
-  /** Indicates if a path is chosen. */
+  /**
+   * Indicates if a path is chosen.
+   */
   private boolean isPathChosen = false;
-  /** Indicates if the player wants to fight. */
+  /**
+   * Indicates if the player wants to fight.
+   */
   private boolean wantsToFight = false;
-  /** The attack power of the player in turn. */
+  /**
+   * The attack power of the player in turn.
+   */
   private int attackPower = 0;
-  /** The winner of the game. */
+  /**
+   * The winner of the game.
+   */
   private Player winner = null;
-  /** Indicates if a card is being played by the players on the fight. */
+  /**
+   * Indicates if a card is being played by the players on the fight.
+   */
   private Boolean isPlayingFightCard = false;
-  /** The panels on the table board. */
+  /**
+   * The panels on the table board.
+   */
   private final Set<Panel> boardTable = new HashSet<>();
-  /** The handler of when a player wins. */
+  /**
+   * The handler of when a player wins.
+   */
   private final IHandler winHandler = new WinHandler(this);
-  /** The list of cards of the game. */
+  /**
+   * The list of cards of the game.
+   */
   private final List<Card> cards = new ArrayList<>();
-  /** The target that the actual player is attacking. */
+  /**
+   * The target that the actual player is attacking.
+   */
   private Player target = null;
-  /** Indicates if the target is evading. */
+  /**
+   * Indicates if the target is evading.
+   */
   private boolean isEvading = false;
-  /** Indicates if the target is defending. */
+  /**
+   * Indicates if the target is defending.
+   */
   private boolean isDefending = false;
-  /** The evasion power of the target. */
+  /**
+   * The evasion power of the target.
+   */
   private int evadePower = 0;
-  /** The defense power of the target. */
+  /**
+   * The defense power of the target.
+   */
   private int defensePower = 0;
-  /** The winner of the actual battle. */
+  /**
+   * The winner of the actual battle.
+   */
   private Player battleWinner = null;
-  /** The loser of the actual battle. */
+  /**
+   * The loser of the actual battle.
+   */
   private Player battleLoser = null;
-  /** The attack power of the target. */
+  /**
+   * The attack power of the target.
+   */
   private int counterAttackPower = 0;
-  /** Indicates if the player in turn is evading. */
+  /**
+   * Indicates if the player in turn is evading.
+   */
   private boolean isTurnEvading = false;
-  /** Indicates if the player in turn is defending. */
+  /**
+   * Indicates if the player in turn is defending.
+   */
   private boolean isTurnDefending = false;
-  /** The player in turns evasion power. */
+  /**
+   * The player in turns evasion power.
+   */
   private int counterEvadePower = 0;
-  /** The player in turns evading power. */
+  /**
+   * The player in turns evading power.
+   */
   private int counterDefensePower = 0;
-  /** The list of players we can fight. */
+  /**
+   * The list of players we can fight.
+   */
   private List<Player> listOfFight = new ArrayList<>();
 
   /**
@@ -574,8 +641,7 @@ public class Controller {
    * For testing purposes.
    *
    * @param number It's the number corresponding
-   *              to the character you want to play
-   *
+   *               to the character you want to play
    * @return the player chosen
    */
   public Player choosePlayer(final String number) {
@@ -629,7 +695,6 @@ public class Controller {
    * Gets the state of the player (Dead or Alive).
    *
    * @param player A character of the game
-   *
    * @return True if the player is dead
    */
   public boolean isKo(final Player player) {
@@ -694,7 +759,6 @@ public class Controller {
    * Gets if we are on a path split.
    *
    * @param panel A panel of the board
-   *
    * @return true if there's a split on the way
    */
   public boolean isPathSplitEncounter(final Panel panel) {
@@ -705,7 +769,6 @@ public class Controller {
    * Gets if the player's on the same panels as another a player.
    *
    * @param panel A panel of the board
-   *
    * @return true if the players are on the same panel
    */
   public boolean isPlayersEncounter(final Panel panel) {
@@ -717,7 +780,6 @@ public class Controller {
    * Gets if the player is on his/her home panel.
    *
    * @param panel A panel of the board
-   *
    * @return true if the player is at his/her home panel
    */
   public boolean isHomePanelEncounter(final Panel panel) {
@@ -769,7 +831,6 @@ public class Controller {
    * Creates a bonus panel with a chosen id.
    *
    * @param id The identification of the panel
-   *
    * @return A bonus panel
    */
   public BonusPanel createBonusPanel(final int id) {
@@ -782,7 +843,6 @@ public class Controller {
    * Creates a boss panel with a chosen id.
    *
    * @param id The identification of the panel
-   *
    * @return A boss panel
    */
   public BossPanel createBossPanel(final int id) {
@@ -795,7 +855,6 @@ public class Controller {
    * Creates a draw panel with a chosen id.
    *
    * @param id The identification of the panel
-   *
    * @return A draw panel
    */
   public DrawPanel createDrawPanel(final int id) {
@@ -808,7 +867,6 @@ public class Controller {
    * Creates a drop panel with a chosen id.
    *
    * @param id The identification of the panel
-   *
    * @return A drop panel
    */
   public DropPanel createDropPanel(final int id) {
@@ -821,7 +879,6 @@ public class Controller {
    * Creates an encounter panel with a chosen id.
    *
    * @param id The identification of the panel
-   *
    * @return An encounter panel
    */
   public EncounterPanel createEncounterPanel(final int id) {
@@ -835,7 +892,6 @@ public class Controller {
    *
    * @param id    The identification of the panel
    * @param owner The owner of the home panel
-   *
    * @return A home panel
    */
   public HomePanel createHomePanel(final Player owner, final int id) {
@@ -849,7 +905,6 @@ public class Controller {
    * Creates a neutral panel with a chosen id.
    *
    * @param id The identification of the panel
-   *
    * @return A neutral panel
    */
   public NeutralPanel createNeutralPanel(final int id) {
@@ -1502,7 +1557,7 @@ public class Controller {
    * and it's his own.
    *
    * @return true if the panel is a home panel
-   *      and the owner is the actual player
+   *        and the owner is the actual player
    */
   public boolean getIsHomePanelEncounter() {
     return isHomePanelEncounter;
@@ -2079,12 +2134,13 @@ public class Controller {
    *
    * @param path The number of the path chosen
    */
-  public void setPath(int path) {
+  public void setPath(final int path) {
     List<Panel> next = getActualPanel().getNextPanels();
-    Panel chosen = next.get(path-1);
-    setNumberOfMovements(getNumberOfMovements()-1);
+    Panel chosen = next.get(path - 1);
+    setNumberOfMovements(getNumberOfMovements() - 1);
+    placePlayer(getTurn(), chosen);
     setIsPathSplitEncounter(false);
     setPathChosen(true);
-    placePlayer(getTurn(), chosen);
+
   }
 }

@@ -1,12 +1,11 @@
 package cl.uchile.dcc.citricliquid.model.board.panels;
 
+import cl.uchile.dcc.citricliquid.model.board.panels.abstracts.Panel;
+import cl.uchile.dcc.citricliquid.model.board.players.Player;
+import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import cl.uchile.dcc.citricliquid.model.board.players.Player;
-import cl.uchile.dcc.citricliquid.model.board.panels.abstracts.Panel;
-import org.jetbrains.annotations.NotNull;
 
 
 /**

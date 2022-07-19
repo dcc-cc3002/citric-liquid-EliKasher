@@ -6,7 +6,9 @@ import cl.uchile.dcc.citricliquid.model.board.players.Player;
  * Creates a unique instance of a player named Yuki.
  */
 public final class Yuki extends Player {
-  /** An unique player named Yuki. */
+  /**
+   * An unique player named Yuki.
+   */
   private static Yuki uniqueYuki;
 
   /**

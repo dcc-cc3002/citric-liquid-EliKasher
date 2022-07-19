@@ -6,20 +6,29 @@ import cl.uchile.dcc.citricliquid.model.board.objective.WinsNorma;
 import cl.uchile.dcc.citricliquid.model.board.panels.abstracts.Panel;
 import cl.uchile.dcc.citricliquid.model.board.players.Player;
 import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/** It's the class HomePanel, represents a home panel on the board. */
+/**
+ * It's the class HomePanel, represents a home panel on the board.
+ */
 public class HomePanel extends Panel {
-  /** The owner of the panel. */
+  /**
+   * The owner of the panel.
+   */
   private final Player owner;
-  /** The norma object that has the star objective.*/
+  /**
+   * The norma object that has the star objective.
+   */
   private final StarsNorma sn = new StarsNorma();
-  /** The norma object that has the win objective. */
+  /**
+   * The norma object that has the win objective.
+   */
   private final WinsNorma wn = new WinsNorma();
-  /** The players on this panel. */
+  /**
+   * The players on this panel.
+   */
   private final List<Player> listOfPlayers = new ArrayList<>();
 
   /**
@@ -36,7 +45,7 @@ public class HomePanel extends Panel {
    * Creates a new home panel with an owner.
    *
    * @param player The main character of the game
-   * @param id The identification of the panel
+   * @param id     The identification of the panel
    */
   public HomePanel(final Player player, final int id) {
     super(id);

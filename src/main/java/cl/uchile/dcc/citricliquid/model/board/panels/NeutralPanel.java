@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citricliquid.model.board.panels;
 
-import cl.uchile.dcc.citricliquid.model.board.players.Player;
 import cl.uchile.dcc.citricliquid.model.board.panels.abstracts.Panel;
+import cl.uchile.dcc.citricliquid.model.board.players.Player;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -10,7 +10,9 @@ import java.util.Objects;
  * It's the class NeutralPanel, represents a neutral panel on the board.
  */
 public class NeutralPanel extends Panel {
-  /** The players on this panel. */
+  /**
+   * The players on this panel.
+   */
   private final List<Player> listOfPlayers = new ArrayList<>();
 
   /**

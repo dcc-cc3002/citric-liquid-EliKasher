@@ -6,30 +6,44 @@ import java.util.Objects;
  * Class for the enemies.
  */
 public class EnemyUnit {
-  /** The name of the character. */
+  /**
+   * The name of the character.
+   */
   private final String nm;
-  /** The max HP of the character. */
+  /**
+   * The max HP of the character.
+   */
   private final int mxHp;
-  /** The atk points of the character. */
+  /**
+   * The atk points of the character.
+   */
   private final int attack;
-  /** The defense points of the character. */
+  /**
+   * The defense points of the character.
+   */
   private final int defense;
-  /** The evasion points of the character. */
+  /**
+   * The evasion points of the character.
+   */
   private final int evade;
-  /** The current wins of the character. */
+  /**
+   * The current wins of the character.
+   */
   private final int wins;
-  /** The current hp of the character. */
+  /**
+   * The current hp of the character.
+   */
   private int currentHp;
 
   /**
    * Creates a new character.
    *
    * @param name the name of the character.
-   * @param hp  the initial (and max) hit points of the character.
-   * @param atk the base damage the character does.
-   * @param def the base defense of the character.
-   * @param evd the base evasion of the character.
-   * @param win the quantity of wins that has the character.
+   * @param hp   the initial (and max) hit points of the character.
+   * @param atk  the base damage the character does.
+   * @param def  the base defense of the character.
+   * @param evd  the base evasion of the character.
+   * @param win  the quantity of wins that has the character.
    */
   public EnemyUnit(final String name, final int hp, final int atk,
                    final int def, final int evd, final int win) {
