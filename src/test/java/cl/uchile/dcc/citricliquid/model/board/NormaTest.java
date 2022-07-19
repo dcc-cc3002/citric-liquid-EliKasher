@@ -1,5 +1,8 @@
 package cl.uchile.dcc.citricliquid.model.board;
 
+import cl.uchile.dcc.citricliquid.model.board.objective.StarsNorma;
+import cl.uchile.dcc.citricliquid.model.board.objective.WinsNorma;
+import cl.uchile.dcc.citricliquid.model.board.players.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 

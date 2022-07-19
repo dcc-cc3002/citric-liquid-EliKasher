@@ -1,8 +1,13 @@
 package cl.uchile.dcc.citricliquid.model;
 
 import cl.uchile.dcc.citricliquid.controller.Controller;
-import cl.uchile.dcc.citricliquid.model.board.*;
-import cl.uchile.dcc.citricliquid.model.board.abstracts.Panel;
+import cl.uchile.dcc.citricliquid.model.board.panels.abstracts.Panel;
+import cl.uchile.dcc.citricliquid.model.board.objective.Objective;
+import cl.uchile.dcc.citricliquid.model.board.panels.HomePanel;
+import cl.uchile.dcc.citricliquid.model.board.panels.NeutralPanel;
+import cl.uchile.dcc.citricliquid.model.board.players.Player;
+import cl.uchile.dcc.citricliquid.model.board.enemies.BossUnit;
+import cl.uchile.dcc.citricliquid.model.board.enemies.WildUnit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

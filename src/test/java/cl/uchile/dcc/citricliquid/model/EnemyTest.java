@@ -1,8 +1,8 @@
 package cl.uchile.dcc.citricliquid.model;
 
-import cl.uchile.dcc.citricliquid.model.board.BossUnit;
-import cl.uchile.dcc.citricliquid.model.board.EnemyGenerator;
-import cl.uchile.dcc.citricliquid.model.board.WildUnit;
+import cl.uchile.dcc.citricliquid.model.board.enemies.BossUnit;
+import cl.uchile.dcc.citricliquid.model.board.enemies.EnemyGenerator;
+import cl.uchile.dcc.citricliquid.model.board.enemies.WildUnit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;

@@ -1,19 +1,26 @@
 package cl.uchile.dcc.citricliquid.controller;
 
-import static java.lang.Integer.parseInt;
-import cl.uchile.dcc.citricliquid.controller.handler.HomePanelHandler;
 import cl.uchile.dcc.citricliquid.controller.handler.WinHandler;
+import cl.uchile.dcc.citricliquid.controller.handler.interfaces.IHandler;
 import cl.uchile.dcc.citricliquid.controller.state.StartState;
 import cl.uchile.dcc.citricliquid.controller.state.State;
 import cl.uchile.dcc.citricliquid.exceptions.InvalidStateOperationException;
-import cl.uchile.dcc.citricliquid.model.Card;
-import cl.uchile.dcc.citricliquid.model.board.*;
-import cl.uchile.dcc.citricliquid.model.board.abstracts.Panel;
-import cl.uchile.dcc.citricliquid.model.board.singleton.Aru;
-import cl.uchile.dcc.citricliquid.model.board.singleton.Suguri;
-import cl.uchile.dcc.citricliquid.model.board.singleton.Tomomo;
-import cl.uchile.dcc.citricliquid.model.board.singleton.Yuki;
+import cl.uchile.dcc.citricliquid.model.board.cards.Card;
+import cl.uchile.dcc.citricliquid.model.board.enemies.BossUnit;
+import cl.uchile.dcc.citricliquid.model.board.enemies.EnemyGenerator;
+import cl.uchile.dcc.citricliquid.model.board.enemies.WildUnit;
+import cl.uchile.dcc.citricliquid.model.board.objective.Objective;
+import cl.uchile.dcc.citricliquid.model.board.panels.*;
+import cl.uchile.dcc.citricliquid.model.board.panels.abstracts.Panel;
+import cl.uchile.dcc.citricliquid.model.board.players.Player;
+import cl.uchile.dcc.citricliquid.model.board.players.singleton.Aru;
+import cl.uchile.dcc.citricliquid.model.board.players.singleton.Suguri;
+import cl.uchile.dcc.citricliquid.model.board.players.singleton.Tomomo;
+import cl.uchile.dcc.citricliquid.model.board.players.singleton.Yuki;
+
 import java.util.*;
+
+import static java.lang.Integer.parseInt;
 
 /**
  * The controller of the game. Starts and regulates the flow of the game.
@@ -32,7 +39,7 @@ public class Controller {
   /** It's the state of the game. */
   private State state = new StartState(this);
   /** The generator of random enemies. */
-  private EnemyGenerator eg = new EnemyGenerator();
+  private final EnemyGenerator eg = new EnemyGenerator();
   /** The panel where the player in turn is. */
   private Panel actualPanel = null;
   /** Indicates if a card is being played by the actual player. */
@@ -45,8 +52,6 @@ public class Controller {
   private boolean isHomePanelEncounter = false;
   /** Indicates if there's a path split. */
   private boolean isPathSplitEncounter = false;
-  /** Indicates if a player wants to fight. */
-  private boolean isPlayerFighting = false;
   /** Indicates if a path is chosen. */
   private boolean isPathChosen = false;
   /** Indicates if the player wants to fight. */
@@ -60,11 +65,9 @@ public class Controller {
   /** The panels on the table board. */
   private final Set<Panel> boardTable = new HashSet<>();
   /** The handler of when a player wins. */
-  private WinHandler winHandler = new WinHandler(this);
-  /** The handler of when a player lands on a Home Panel. */
-  private HomePanelHandler homePanelHandler = new HomePanelHandler(this);
+  private final IHandler winHandler = new WinHandler(this);
   /** The list of cards of the game. */
-  private List<Card> cards = new ArrayList<>();
+  private final List<Card> cards = new ArrayList<>();
   /** The target that the actual player is attacking. */
   private Player target = null;
   /** Indicates if the target is evading. */
