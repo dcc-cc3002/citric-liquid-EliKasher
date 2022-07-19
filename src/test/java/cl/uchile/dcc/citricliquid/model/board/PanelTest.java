@@ -1,15 +1,16 @@
 package cl.uchile.dcc.citricliquid.model.board;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import java.util.List;
-import java.util.Random;
-
 import cl.uchile.dcc.citricliquid.model.board.panels.*;
 import cl.uchile.dcc.citricliquid.model.board.players.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+import java.util.Random;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author <a href="mailto:ignacio.slater@ug.uchile.cl">Ignacio Slater M.</a>.
@@ -85,6 +86,13 @@ class PanelTest {
 
     assertEquals(suguri, testHomePanel.getOwner());
 
+    assertEquals(0, testHomePanel.getListOfPlayers().size());
+    testHomePanel.addPlayer(suguri);
+    assertEquals(1, testHomePanel.getListOfPlayers().size());
+    assertTrue(testHomePanel.getListOfPlayers().contains(suguri));
+    testHomePanel.removePlayer(suguri);
+    assertEquals(0, testHomePanel.getListOfPlayers().size());
+
     suguri.setCurrentHp(1);
     testHomePanel.activatedBy(suguri);
     assertEquals(2, suguri.getCurrentHp());
@@ -158,11 +166,24 @@ class PanelTest {
     final var expectedSuguri = suguri.copy();
     testNeutralPanel.activatedBy(suguri);
     assertEquals(expectedSuguri, suguri);
+
+    assertEquals(0, testNeutralPanel.getListOfPlayers().size());
+    testNeutralPanel.addPlayer(suguri);
+    assertEquals(1, testNeutralPanel.getListOfPlayers().size());
+    assertTrue(testNeutralPanel.getListOfPlayers().contains(suguri));
+    testNeutralPanel.removePlayer(suguri);
+    assertEquals(0, testNeutralPanel.getListOfPlayers().size());
   }
 
   // region : Consistency tests
   @RepeatedTest(100)
   public void bonusPanelConsistencyTest() {
+    assertEquals(0, testBonusPanel.getListOfPlayers().size());
+    testBonusPanel.addPlayer(suguri);
+    assertEquals(1, testBonusPanel.getListOfPlayers().size());
+    assertTrue(testBonusPanel.getListOfPlayers().contains(suguri));
+    testBonusPanel.removePlayer(suguri);
+    assertEquals(0, testBonusPanel.getListOfPlayers().size());
 
     int expectedStars = 0;
     assertEquals(expectedStars, suguri.getStars());
@@ -180,6 +201,13 @@ class PanelTest {
 
   @RepeatedTest(100)
   public void dropPanelConsistencyTest() {
+    assertEquals(0, testDropPanel.getListOfPlayers().size());
+    testDropPanel.addPlayer(suguri);
+    assertEquals(1, testDropPanel.getListOfPlayers().size());
+    assertTrue(testDropPanel.getListOfPlayers().contains(suguri));
+    testDropPanel.removePlayer(suguri);
+    assertEquals(0, testDropPanel.getListOfPlayers().size());
+
     int expectedStars = 30;
     suguri.increaseStarsBy(30);
     assertEquals(expectedStars, suguri.getStars());
@@ -197,6 +225,13 @@ class PanelTest {
 
   @Test
   public void bossPanelTest() {
+    assertEquals(0, testBossPanel.getListOfPlayers().size());
+    testBossPanel.addPlayer(suguri);
+    assertEquals(1, testBossPanel.getListOfPlayers().size());
+    assertTrue(testBossPanel.getListOfPlayers().contains(suguri));
+    testBossPanel.removePlayer(suguri);
+    assertEquals(0, testBossPanel.getListOfPlayers().size());
+
     final var expectedSuguri = suguri.copy();
     testBossPanel.activatedBy(suguri);
     assertEquals(expectedSuguri, suguri);
@@ -204,6 +239,13 @@ class PanelTest {
 
   @Test
   public void encounterPanelTest() {
+    assertEquals(0, testEncounterPanel.getListOfPlayers().size());
+    testEncounterPanel.addPlayer(suguri);
+    assertEquals(1, testEncounterPanel.getListOfPlayers().size());
+    assertTrue(testEncounterPanel.getListOfPlayers().contains(suguri));
+    testEncounterPanel.removePlayer(suguri);
+    assertEquals(0, testEncounterPanel.getListOfPlayers().size());
+
     final var expectedSuguri = suguri.copy();
     testEncounterPanel.activatedBy(suguri);
     assertEquals(expectedSuguri, suguri);
@@ -211,6 +253,13 @@ class PanelTest {
 
   @Test
   public void drawPanelTest() {
+    assertEquals(0, testDrawPanel.getListOfPlayers().size());
+    testDrawPanel.addPlayer(suguri);
+    assertEquals(1, testDrawPanel.getListOfPlayers().size());
+    assertTrue(testDrawPanel.getListOfPlayers().contains(suguri));
+    testDrawPanel.removePlayer(suguri);
+    assertEquals(0, testDrawPanel.getListOfPlayers().size());
+
     final var expectedSuguri = suguri.copy();
     testDrawPanel.activatedBy(suguri);
     assertEquals(expectedSuguri, suguri);

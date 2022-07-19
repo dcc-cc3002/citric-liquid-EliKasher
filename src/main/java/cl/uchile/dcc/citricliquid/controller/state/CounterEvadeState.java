@@ -42,19 +42,11 @@ public class CounterEvadeState extends State {
         context.setBattleLoser(context.getTurn());
         context.endBattle();
       } else {
-        context.attack();
+        context.endBattle();
       }
     } else {
-      context.attack();
+      context.endBattle();
     }
-  }
-
-  /**
-   * Changes the state to Attack State.
-   */
-  @Override
-  public void toAttackState() {
-    context.setState(new AttackState(context));
   }
 
   /**

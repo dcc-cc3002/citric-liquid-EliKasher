@@ -36,22 +36,13 @@ public class CounterDefendState extends State {
     context.rollTurnForDefending();
     context.hitTurnWithDefense();
     if (!context.isKo(context.getTurn())) {
-      context.attack();
+      context.endBattle();
     } else {
       context.setBattleWinner(context.getTarget());
       context.setBattleLoser(context.getTurn());
       context.endBattle();
     }
   }
-
-  /**
-   * Changes the state to Attack State.
-   */
-  @Override
-  public void toAttackState() {
-    context.setState(new AttackState(context));
-  }
-
 
   /**
    * Changes the state to End Battle State.

@@ -33,6 +33,7 @@ public class EndBattleState extends State {
   @Override
   public void toDo() {
     context.battleResult();
+    context.foughtCheck();
     if (context.getListOfFight().size() > 0) {
       context.battle();
     } else {

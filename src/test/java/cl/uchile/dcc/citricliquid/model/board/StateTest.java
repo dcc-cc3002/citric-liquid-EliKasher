@@ -1463,7 +1463,7 @@ public class StateTest {
     context.tryCounterEvade();
     assertEquals(2, context.getCounterEvadePower());
     assertFalse(yuki.isKo());
-    assertTrue(context.isAttackState());
+    assertTrue(context.isEndBattleState());
 
 
     Controller context2 = new Controller();
@@ -1511,7 +1511,7 @@ public class StateTest {
     context2.tryCounterEvade();
     assertEquals(4, context2.getCounterEvadePower());
     assertFalse(yuki2.isKo());
-    assertTrue(context2.isAttackState());
+    assertTrue(context2.isEndBattleState());
 
 
 
@@ -1612,7 +1612,7 @@ public class StateTest {
     context.tryCounterDefend();
     assertEquals(4, context.getCounterDefensePower());
     assertFalse(yuki.isKo());
-    assertTrue(context.isAttackState());
+    assertTrue(context.isEndBattleState());
 
     Controller context2 = new Controller();
     Player yuki2 = context2.choosePlayer("1");
@@ -1709,6 +1709,62 @@ public class StateTest {
     context2.tryEndBattle();
     assertEquals(2, yuki2.getWins());
     assertEquals(3, yuki2.getStars());
+
+    assertEquals(0, context2.getListOfFight().size());
+    assertTrue(context2.isMoveState());
+
+    Controller context3 = new Controller();
+    Player yuki3 = context3.choosePlayer("1");
+    Player suguri3 = context3.choosePlayer("2");
+    Player aru = context3.choosePlayer("4");
+    aru.setCurrentHp(10);
+    yuki3.setCurrentHp(5);
+    yuki3.setWins(0);
+    yuki3.reduceStarsBy(100);
+    suguri3.setCurrentHp(4);
+    suguri3.increaseStarsBy(4);
+    assertEquals(8, suguri3.getStars());
+    HomePanel homePanel3 = context3.createHomePanel(yuki2, 63);
+    NeutralPanel neutralPanel3 = context3.createNeutralPanel(64);
+    homePanel3.addNextPanel(neutralPanel3);
+    context3.placePlayer(yuki3, homePanel3);
+    suguri3.setPanel(neutralPanel3);
+    neutralPanel3.addPlayer(suguri3);
+    aru.setPanel(neutralPanel3);
+    neutralPanel3.addPlayer(aru);
+
+    context3.tryStart();
+    context3.tryStars();
+    context3.setIsPlayingCard(false);
+    context3.tryWait();
+    context3.setSeed(17);
+    context3.tryRoll();
+
+    context3.setWantsToFight(true);
+    context3.setListOfFight();
+    assertEquals(2, context3.getListOfFight().size());
+    context3.tryBattle();
+    context3.setTarget(suguri3);
+    context3.tryFight();
+    context3.setIsPlayingFightCard(false);
+    context3.tryFightCard();
+    context3.setSeed(2);
+    context3.setIsEvading(true);
+    context3.tryAttack();
+    assertEquals(7, context3.getAttackPower());
+    context3.setTargetSeed(3);
+    context3.tryEvade();
+    assertEquals(5, context3.getEvadePower());
+    assertTrue(suguri3.isKo());
+    assertEquals(yuki3, context3.getBattleWinner());
+    assertEquals(suguri3, context3.getBattleLoser());
+    assertTrue(context3.isEndBattleState());
+    context3.tryEndBattle();
+    assertEquals(2, yuki3.getWins());
+    assertEquals(5, yuki3.getStars());
+
+    assertEquals(1, context3.getListOfFight().size());
+    assertTrue(context3.isBattleState());
   }
 
   @Test

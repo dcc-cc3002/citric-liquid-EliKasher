@@ -2061,20 +2061,21 @@ public class Controller {
     Player win = getBattleWinner();
     Player loser = getBattleLoser();
 
-    int stars = loser.getStars();
-    int givenStars = (int) Math.floor(stars / 2);
+    if (win != null) {
+      int stars = loser.getStars();
+      int givenStars = (int) Math.floor(stars / 2);
 
-    int actualWins = win.getWins();
-    win.setWins(actualWins + 2);
-    win.increaseStarsBy(givenStars);
+      int actualWins = win.getWins();
+      win.setWins(actualWins + 2);
+      win.increaseStarsBy(givenStars);
+    }
   }
 
   /**
    * Removes the player we are actually fighting.
    */
   public void foughtCheck() {
-    List<Player> fight = getListOfFight();
-    fight.remove(getTarget());
+    getListOfFight().remove(getTarget());
   }
 
   /**
