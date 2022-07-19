@@ -2,9 +2,9 @@ package cl.uchile.dcc.citricliquid.model.board.panels.abstracts;
 
 import cl.uchile.dcc.citricliquid.model.board.panels.interfaces.IPanel;
 import cl.uchile.dcc.citricliquid.model.board.players.Player;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Class that represents a panel in the board of the game.
@@ -150,30 +150,4 @@ public abstract class Panel implements IPanel {
     coordinates[1] = y;
   }
 
-  /**
-   * Generates a hashcode for the id of the panel.
-   *
-   * @return a number with the code
-   */
-  @Override
-  public int hashCode() {
-    return Objects.hash(getId(), getClass());
-  }
-
-  /**
-   * Gets if an object it's the same as this one.
-   *
-   * @param o An object
-   * @return true if the objects are the same
-   */
-  @Override
-  public boolean equals(final Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (!(o instanceof final Panel panel)) {
-      return false;
-    }
-    return getId() == panel.getId();
-  }
 }

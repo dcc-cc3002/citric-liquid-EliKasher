@@ -23,7 +23,6 @@ public class BattleState extends State {
   public void toDo() {
     context.promptChooseToFight();
     if (context.getWantsToFight()) {
-      context.foughtCheck();
       context.fight();
     } else {
       context.move();
